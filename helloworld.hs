@@ -75,5 +75,10 @@ helloworld = withArduino False "/dev/ttyACM0" $ do
                 sequence_ secondDisplay
                 delay 1000
                 allOff
+                digitalWrite carryLed True
+                delay 1000
+                digitalWrite carryLed False
                 sequence_ resultDisplay
+                delay 1000
+                allOff
                 delay 1000
