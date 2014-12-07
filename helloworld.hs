@@ -47,8 +47,8 @@ allOff = do
 helloworld :: IO ()
 helloworld = withArduino False "/dev/ttyACM0" $ do
               let carryLed = digital 9
-                  xs = [1, 0, 1, 0]
-                  ys = [1, 0, 1]
+                  xs = [1, 1, 1]
+                  ys = [1, 1]
                   xs' = take (4 - length xs) (repeat 0) ++ xs
                   ys' = take (4 - length ys) (repeat 0) ++ ys
                   result = binaryAdd xs ys
@@ -67,18 +67,18 @@ helloworld = withArduino False "/dev/ttyACM0" $ do
               forever $ do
                 allOff
                 sequence_ firstDisplay
-                delay 1000
+                delay 250
                 allOff
                 digitalWrite carryLed True
-                delay 1000
+                delay 250
                 digitalWrite carryLed False
                 sequence_ secondDisplay
-                delay 1000
+                delay 250
                 allOff
                 digitalWrite carryLed True
-                delay 1000
+                delay 250
                 digitalWrite carryLed False
                 sequence_ resultDisplay
-                delay 1000
+                delay 250
                 allOff
-                delay 1000
+                delay 250
